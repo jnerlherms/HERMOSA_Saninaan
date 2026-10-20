@@ -1,16 +1,31 @@
-# React + Vite
+# Sanina'an (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A front-end rewrite of the Sanina'an thrift marketplace using **React.js + Tailwind CSS only**.
 
-Currently, two official plugins are available:
+## Links
+- Figma design: PASTE_YOUR_FIGMA_LINK_HERE
+- Class diagram: [docs/class-diagram.mmd](docs/class-diagram.mmd) and `docs/class-diagram.png`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Multi-page routing (Home, Shop, Product Details, Cart, Orders) with React Router
+- Dynamic filtering: search, category, condition, max price, sorting, hide sold items
+- Cart and checkout with React Context (every item is one-of-a-kind, so no quantities)
+- All text comes from `src/data/content.js` and all items come from the model classes in `src/models`
+- Responsive layout styled strictly with Tailwind CSS
 
-## React Compiler
+## Run it
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Folder guide
+```
+src/
+  models/      Category, ProductCondition, Vendor, Product, Buyer, Cart, Order
+  data/        content.js (all UI text), categories, conditions, vendors, products, lookup
+  context/     cart state (CartProvider, useCart)
+  components/  Navbar, Footer, ProductCard
+  pages/       Home, Shop, ProductDetails, Cart, Orders
+docs/          class diagram
+```
