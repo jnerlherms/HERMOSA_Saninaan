@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+/* Colors and fonts taken from the Sanina'an PHP site */
+@theme {
+  --color-cream: #f7f2e6;
+  --color-sand: #ede4c2;
+  --color-rust: #a03a13;
+  --color-orange: #f5824a;
+  --color-sage: #6b8c68;
+  --color-forest: #254f22;
+  --color-ink: #1c2b1a;
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Jost", system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-cream font-body text-ink; }
