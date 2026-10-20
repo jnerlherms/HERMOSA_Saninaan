@@ -1,0 +1,73 @@
+classDiagram
+    direction LR
+
+    class Category {
+        <<model src/models/Category.js>>
+        +number id
+        +string name
+        +string emoji
+        +string tint
+    }
+
+    class ProductCondition {
+        <<model src/models/ProductCondition.js>>
+        +number id
+        +string name
+        +string description
+    }
+
+    class Vendor {
+        <<model src/models/Vendor.js>>
+        +number id
+        +string storeName
+        +string city
+        +string bio
+    }
+
+    class Product {
+        <<model src/models/Product.js>>
+        +number id
+        +number vendorId
+        +number categoryId
+        +number conditionId
+        +string name
+        +string description
+        +number price
+        +Date dateListed
+        +string emoji
+        +string status
+        +isAvailable() boolean
+    }
+
+    class Buyer {
+        <<model src/models/Buyer.js>>
+        +string name
+        +string city
+        +string phone
+    }
+
+    class Cart {
+        <<model src/models/Cart.js>>
+        +Product[] items
+        +count() number
+        +total() number
+        +has(productId) boolean
+        +add(product) Cart
+        +remove(productId) Cart
+    }
+
+    class Order {
+        <<model src/models/Order.js>>
+        +number id
+        +Product[] items
+        +Buyer buyer
+        +Date date
+        +total() number
+    }
+
+    Vendor "1" --> "0..*" Product : sells
+    Category "1" --> "0..*" Product : groups
+    ProductCondition "1" --> "0..*" Product : describes
+    Cart "1" o-- "0..*" Product : holds
+    Order "1" o-- "1..*" Product : contains
+    Order "0..*" --> "1" Buyer : placed by
